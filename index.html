@@ -514,7 +514,7 @@ footer .wrap { padding-block: 18px; display: flex; flex-wrap: wrap; gap: 10px; j
         <span class="tape pink"></span>
         <h2>the 30-second version</h2>
         <div class="facts">
-          <div><span>looking for</span><b>Marketing, project coordination & tech roles, ideally at a startup</b></div>
+          <div><span>looking for</span><b>Marketing, project coordination & tech roles, ideally at a startup. Plus a company for my bachelor's thesis.</b></div>
           <div><span>available</span><b>Now · part-time or full-time</b></div>
           <div><span>based in</span><b>Oulu, Finland · open to relocating</b></div>
         </div>
@@ -763,9 +763,9 @@ const DATA = {
     ["Secretary & Marketing Lead, OuluES", "since Sep 2025 / Jan 2026"],
     ["Just wrapped Voices of Europe 2026", "project lead \u00b7 gave the Day 5 keynote"],
     ["Volunteer Lead, Slush 2026", "Recycling Team \u00b7 16\u201320 Nov, Helsinki"],
-    ["Final-year CSE, University of Oulu", "graduating June 2027"]
+    ["Final-year CSE, University of Oulu", "looking for a company for my bachelor's thesis \u00b7 graduating June 2027", true]
   ],
-  askMe: ["startups in Oulu", "moving countries at 16", "Finnish haalari", "frogs"],
+  askMe: ["startups in Oulu", "moving countries at 16", "a thesis project with your company"],
   cv: "https://drive.google.com/file/d/1lGPPzVa9LtgqB7__nGCBPULUfJISWssi/view",
   refs: [
     { name: "Farhan Fuad Utsho", role: "President, OuluES" },
@@ -906,7 +906,7 @@ const DATA = {
     { yr: "Jun 2026", stamp: "City of Oulu", t: "LaunchX + city job", p: "Ran marketing for LaunchX and started as a University Trainee in International Affairs at the City of Oulu.", round: true },
     { yr: "Oct 2026", stamp: "Sundsvall \u00b7 Rokua \u00b7 Oulu", t: "my busiest month", p: "B\u00fcnsow Challenge in Sweden, AURO.RA Fall, and project lead for Voices of Europe, where I gave the Day 5 keynote.", photo: "photos/ev-ikon.jpg" },
     { yr: "Nov 2026", stamp: "Slush", t: "volunteer lead", p: "Leading the Recycling Team at Slush 2026.", round: true },
-    { yr: "Jun 2027", stamp: "Next stop", t: "graduation + you?", p: "Finishing my degree. Available now, part-time or full-time, for marketing, project coordination or tech roles. Open to relocating.", next: true }
+    { yr: "Jun 2027", stamp: "Next stop", t: "graduation + you?", p: "Finishing my degree and looking for a company for my bachelor's thesis. Available now, part-time or full-time, for marketing, project coordination or tech roles. Open to relocating.", next: true }
   ],
   skills: {
     tech: ["Python", "Java", "Kotlin", "C", "Android / Compose", "VR / 3D", "Unity / C#", "Git"],
@@ -915,7 +915,7 @@ const DATA = {
     content: ["Short-form video", "Filming", "Editing", "Scripting", "Bilingual narration"]
   },
   letter: "thank you so much for visiting my portfolio! if you got this far, I think we'd work well together. let's grab a coffee (or a call). xo",
-  extra: "Available now, part-time or full-time, for marketing, project coordination and tech roles, ideally at a startup. Based in Oulu, open to relocating. Graduating in June 2027. As a creator I am open to brand collaborations."
+  extra: "Available now, part-time or full-time, for marketing, project coordination and tech roles, ideally at a startup. Based in Oulu, open to relocating. Final-year CSE student graduating in June 2027 and looking for a company to do my bachelor's thesis with. As a creator I am open to brand collaborations."
 };
 /* ================================================================== */
 
@@ -1274,7 +1274,7 @@ function offlineAnswer(q) {
   if (/reference|vouch|recommend/.test(s)) return `My references: ${DATA.refs.filter(r => !r.role.startsWith("[")).map(r => r.name + " (" + r.role + ")").join(", ")}, and more on request.`;
   if (/contact|email|reach|talk|cv|resume/.test(s)) return `Email me at ${DATA.email}. My CV and links are at the bottom of the page.`;
   if (/study|uni|school|degree|student/.test(s)) return DATA.school ? `I study ${DATA.degree} at ${DATA.school} in ${DATA.city}.` : `I'm a tech student in ${DATA.city}.`;
-  if (/available|when|start|remote|part|full|collab|brand|influenc/.test(s)) return DATA.extra;
+  if (/available|when|start|remote|part|full|collab|brand|influenc|thesis/.test(s)) return DATA.extra;
   return `good question! I don't have that detail here, but I'd love to tell you more: ${DATA.email}`;
 }
 async function ask(q) {
