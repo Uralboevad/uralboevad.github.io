@@ -142,14 +142,22 @@ section { position: relative; }
 .lens-btn:hover path { stroke-dashoffset: 300; }
 .lens-btn[aria-pressed="true"]:hover path { stroke-dashoffset: 0; }
 .tagline { font-family: var(--f-hand); font-size: clamp(1.08rem, 2.04vw, 1.5rem); line-height: 1.05; color: var(--white); min-height: 2.2em; transition: opacity .25s; font-weight: 600; }
-.booth { position: relative; justify-self: center; display: flex; gap: 18px; align-items: flex-start; }
-.strip { background: var(--ink); padding: 10px 10px 26px; display: grid; gap: 8px; width: clamp(130px, 16vw, 170px); transform: rotate(4deg); box-shadow: 0 10px 24px rgba(0,0,0,.3); }
-.strip .ph { aspect-ratio: 1 / 1; }
-.strip .ph.empty span { font-size: 1.1rem; }
-.about-scrawl { position: absolute; left: -36%; top: 34%; font-family: var(--f-hand); color: var(--pink); font-size: clamp(2.4rem, 5.4vw, 3.96rem); line-height: .8; transform: rotate(-10deg); text-shadow: 0 2px 0 var(--rose); pointer-events: none; z-index: 2; font-weight: 600; }
-.side-photo { width: clamp(140px, 17vw, 200px); margin-top: 60px; transform: rotate(-5deg); color: var(--ink); }
-.side-photo .tape { top: -10px; right: -18px; transform: rotate(32deg); }
-@media (max-width: 860px) { .about-scrawl { left: -4%; top: auto; bottom: -24px; font-size: 4.2rem; } }
+.nowbox { position: relative; justify-self: center; width: min(100%, 400px); display: grid; gap: 26px; }
+.now { position: relative; background: var(--white); color: var(--ink); padding: 26px 24px 18px; box-shadow: 0 14px 30px rgba(0,0,0,.25); transform: rotate(2deg);
+  background-image: repeating-linear-gradient(transparent 0 31px, rgba(94,147,214,.25) 31px 32px); }
+.now .tape { top: -12px; left: 50%; margin-left: -46px; transform: rotate(-3deg); }
+.now h3 { font-family: var(--f-bubble); font-weight: 400; color: var(--pink-hot); font-size: 2.2rem; line-height: 1; text-align: center; margin-bottom: 14px; }
+.now ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.now li { display: grid; grid-template-columns: 22px 1fr; gap: 8px; align-items: start; font-size: .98rem; line-height: 1.35; }
+.now li i { width: 14px; height: 14px; margin-top: 4px; border: 2px solid var(--ink); border-radius: 50%; }
+.now li i.on { background: var(--pink-hot); border-color: var(--pink-hot); box-shadow: 0 0 0 3px rgba(233,103,156,.25); }
+.now li small { display: block; font-family: var(--f-type); font-size: .76rem; color: var(--ink-soft); }
+.now-foot { font-family: var(--f-type); font-size: .72rem; color: var(--ink-soft); text-align: right; margin-top: 12px; }
+.askme { position: relative; justify-self: center; background: var(--blue); color: var(--ink); padding: 18px 20px; width: 82%; transform: rotate(-3deg); box-shadow: 0 10px 22px rgba(0,0,0,.2); text-align: center; display: grid; gap: 8px; }
+.askme .tape { top: -12px; left: 50%; margin-left: -46px; transform: rotate(4deg); }
+.askme b { font-family: var(--f-bubble); font-weight: 400; font-size: 1.4rem; }
+.askme span { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.askme em { font-style: normal; background: var(--white); border: 1.5px solid var(--ink); border-radius: 999px; padding: 2px 10px; font-size: .88rem; }
 
 /* ---------- STORY: boarding pass + passport stamps ---------- */
 .story-head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; margin-bottom: 30px; }
@@ -531,10 +539,18 @@ footer .wrap { padding-block: 18px; display: flex; flex-wrap: wrap; gap: 10px; j
           <p class="tagline" id="tagline" aria-live="polite"></p>
         </div>
       </div>
-      <div class="booth">
-        <div class="strip" id="strip"></div>
-        <figure class="photo side-photo" style="margin:0" data-photo="about" data-alt="Candid photo"><span class="tape blue"></span></figure>
-        <span class="about-scrawl" aria-hidden="true">about<br>&nbsp;&nbsp;me</span>
+      <div class="nowbox">
+        <div class="now">
+          <span class="tape blue"></span>
+          <h3>right now</h3>
+          <ul id="nowList"></ul>
+          <p class="now-foot">updated Oct 2026</p>
+        </div>
+        <div class="askme">
+          <span class="tape pink"></span>
+          <b>ask me about</b>
+          <span id="askList"></span>
+        </div>
       </div>
     </div>
   </section>
@@ -741,7 +757,15 @@ const DATA = {
     "I speak five languages, and I'm happiest where technical thinking meets content, storytelling and coordination."
   ],
   // Photos are shown in black & white.
-  photos: { hero: "photos/hero.jpg", about: "photos/about.jpg", strip: ["photos/strip1.jpg", "photos/strip2.jpg", "photos/strip3.jpg", "photos/strip4.jpg"] },
+  photos: { hero: "photos/hero.jpg" },
+  now: [
+    ["Open to work", "now \u00b7 part-time or full-time \u00b7 open to relocating", true],
+    ["Secretary & Marketing Lead, OuluES", "since Sep 2025 / Jan 2026"],
+    ["Just wrapped Voices of Europe 2026", "project lead \u00b7 gave the Day 5 keynote"],
+    ["Volunteer Lead, Slush 2026", "Recycling Team \u00b7 16\u201320 Nov, Helsinki"],
+    ["Final-year CSE, University of Oulu", "graduating June 2027"]
+  ],
+  askMe: ["startups in Oulu", "moving countries at 16", "Finnish haalari", "frogs"],
   cv: "https://drive.google.com/file/d/1lGPPzVa9LtgqB7__nGCBPULUfJISWssi/view",
   refs: [
     { name: "Farhan Fuad Utsho", role: "President, OuluES" },
@@ -794,7 +818,7 @@ const DATA = {
       action: "Project manager. I wrote the project plan, Luma pages, social posts, website copy, emails and panel scripts, and sat on Panel A.",
       result: "Nearly 200 attendees.",
       metric: "~200 attendees", tools: ["Project plan", "Luma", "Copywriting", "Panel scripts"] },
-    { title: "My Content Brand", lenses: ["content", "marketing"], bg: "pink", mark: "rec", photo: "photos/about.jpg",
+    { title: "My Content Brand", lenses: ["content", "marketing"], bg: "pink", mark: "rec", photo: "photos/brand.jpg",
       blurb: "Bilingual content for the Uzbek-speaking diaspora: an Uzbek girl building her life in Finland through tech. Known as \u201cthe protector of girls studying abroad\u201d.",
       challenge: "Build an honest, calm brand from zero, and shift the audience toward young Uzbek women.",
       action: "I plan, film, edit and publish everything myself. Series: Real Life Vlogs, Honest Thoughts and Building in Public.",
@@ -918,7 +942,8 @@ $("[data-roles]").textContent = DATA.roles;
 document.querySelectorAll("[data-email]").forEach(n => n.textContent = DATA.email);
 $("#draftClose").onclick = () => { $("#draft").hidden = true; };
 document.querySelectorAll("[data-photo]").forEach(f => f.prepend(photoBox(DATA.photos[f.dataset.photo], f.dataset.alt, f.dataset.photo === "hero" ? "your b&w portrait here" : "candid photo here")));
-$("#strip").append(...DATA.photos.strip.map((s, i) => photoBox(s, "Photo booth " + (i + 1), ["smile", "silly", "serious", "cute"][i % 4])));
+$("#nowList").append(...DATA.now.map(([t, sub, on]) => el("li", {}, el("i", { className: on ? "on" : "" }), el("span", {}, t, el("small", { textContent: sub })))));
+$("#askList").append(...DATA.askMe.map(t => el("em", { textContent: t })));
 $("#bio").append(...DATA.bio.map(t => el("p", { textContent: t })));
 $("#links").append(...DATA.links.map(l => el("a", { className: "btn light", href: l.href, target: "_blank", rel: "noopener", textContent: l.label })));
 $("#letter").append(el("p", { textContent: DATA.letter }), el("p", { textContent: "— " + DATA.first, style: "margin-top:10px;color:var(--rose)" }));
