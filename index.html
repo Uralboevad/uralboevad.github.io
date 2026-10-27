@@ -64,7 +64,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .tape.pink { background: rgba(243, 155, 190, .8); }
 .photo { position: relative; background: var(--white); padding: 8px; box-shadow: 0 6px 18px rgba(40, 25, 20, .18), 0 1px 2px rgba(0,0,0,.12); }
 .photo .ph { position: relative; width: 100%; aspect-ratio: 3 / 4; overflow: hidden; background: #8E8883; }
-.ph img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1) contrast(1.12) brightness(1.03); }
+.ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .ph.empty { background:
   repeating-linear-gradient(135deg, rgba(255,255,255,.07) 0 6px, transparent 6px 12px),
   radial-gradient(circle at 50% 38%, #B9B2AB 0 17%, transparent 17.5%),
@@ -508,11 +508,11 @@ footer .wrap { padding-block: 18px; display: flex; flex-wrap: wrap; gap: 10px; j
         <div class="facts">
           <div><span>looking for</span><b>Marketing, project coordination & tech roles</b></div>
           <div><span>available</span><b>Now · part-time or full-time</b></div>
-          <div><span>based in</span><b>Oulu, Finland · open to moving to Helsinki</b></div>
+          <div><span>based in</span><b>Oulu, Finland · open to relocating</b></div>
         </div>
         <div class="nums" id="nums"></div>
         <div class="row" id="tldrLinks"></div>
-        <p class="collab">Creators & brands: I'm open to collaborations <span class="type">bilingual EN/UZ audience in Uzbekistan & Finland</span></p>
+        <p class="collab">Creators & brands: I'm open to collaborations</p>
       </div>
     </div>
   </section>
@@ -759,7 +759,7 @@ const DATA = {
     all:       { label: "everything", tagline: "I build the tech, tell the story, fill the room and make the content people share." },
     tech:      { label: "tech", tagline: "Final-year CSE student: Python, Java, Kotlin, C, VR and 3D, from Android apps to a 3D Unity game." },
     marketing: { label: "marketing", tagline: "My own channel hit 29k Reels views and reached 15k accounts in 30 days, about 15x my follower count. 13 of OuluES's top 20 most-viewed posts ever are mine too." },
-    events:    { label: "events", tagline: "Project lead for Voices of Europe 2026, project manager for Auro.ra and Arktinen Hehku, and Volunteer Lead at Slush." },
+    events:    { label: "events", tagline: "Project lead for Voices of Europe 2026, project manager for AURO.RA and Arktinen Hehku, marketing for LaunchX, side events for Polar Bear Pitching and Panath\u0113nea, the B\u00fcnsow Challenge in Sweden, Volunteer Lead at Slush, and more." },
     content:   { label: "content", tagline: "Bilingual content for the Uzbek-speaking diaspora: an Uzbek girl building her life in Finland through tech." }
   },
   projects: [
@@ -769,7 +769,7 @@ const DATA = {
       action: "Built and run the website on Voog in Finnish, English and Swedish. Created the branding (logo, colours, fonts), ran the Instagram marketing, partnered with Bothnian Arc for cross-border invites, briefed and coordinated 10 volunteers, and handled tech and venue logistics.",
       result: "~20K Instagram views, and I gave the Day 5 keynote: \u201cRoots, Youth and the Future: Culture in the Digital Age.\u201d",
       metric: "project lead", tools: ["Voog", "Branding", "Instagram", "Volunteer coordination", "Keynote"] },
-    { title: "OuluES Marketing", lenses: ["marketing", "content", "events"], bg: "rose", mark: "ES", photo: "",
+    { title: "OuluES Marketing", lenses: ["marketing", "content", "events"], bg: "rose", mark: "ES", photo: "photos/ev-ikon.jpg",
       blurb: "Board member, Secretary & Marketing Lead at Oulu Entrepreneurship Society.",
       challenge: "Get students excited about startups and keep mentors, judges and partners in sync across many events.",
       action: "I run social media, event marketing, communications and admin (including board meeting minutes) across Instagram, LinkedIn, Luma, Telegram and KideApp.",
@@ -794,10 +794,10 @@ const DATA = {
       action: "Project manager. I wrote the project plan, Luma pages, social posts, website copy, emails and panel scripts, and sat on Panel A.",
       result: "Nearly 200 attendees.",
       metric: "~200 attendees", tools: ["Project plan", "Luma", "Copywriting", "Panel scripts"] },
-    { title: "My Content Brand", lenses: ["content", "marketing"], bg: "pink", mark: "rec", photo: "",
+    { title: "My Content Brand", lenses: ["content", "marketing"], bg: "pink", mark: "rec", photo: "photos/about.jpg",
       blurb: "Bilingual content for the Uzbek-speaking diaspora: an Uzbek girl building her life in Finland through tech. Known as \u201cthe protector of girls studying abroad\u201d.",
       challenge: "Build an honest, calm brand from zero, and shift the audience toward young Uzbek women.",
-      action: "I plan, film, edit and publish everything myself. Series: Real Life Vlogs, Honest Thoughts and Building in Public, plus a Greece trip series and a 15-day \u201c15 Kun\u201d challenge.",
+      action: "I plan, film, edit and publish everything myself. Series: Real Life Vlogs, Honest Thoughts and Building in Public.",
       result: "My best reel has 39.6k views. In the last 30 days (26 Sep\u201326 Oct 2026): 29k Reels views and 15k accounts reached. Followers mostly in Uzbekistan (46.6%) and Finland (36.3%).",
       metric: "29k views / 30d", tools: ["Filming", "Editing", "Scripting", "Uzbek", "English"], link: "https://www.instagram.com/withdinka/", linkLabel: "see it on Instagram" },
     { title: "LaunchX 2026", lenses: ["marketing", "events"], bg: "ink", mark: "LX", photo: "",
@@ -806,7 +806,7 @@ const DATA = {
       action: "Ran all marketing & comms: content plans, carousels, mentor and judge invites, volunteer guidelines and the wrap-up.",
       result: "Winner: Kinet (motion capture with a phone + smartwatch). Finalists: Relocation Care Finland and Cikola Games Studio.",
       metric: "11 days", tools: ["Content plans", "Canva carousels", "Outreach", "Volunteer guidelines"] },
-    { title: "City of Oulu", lenses: ["events", "marketing"], bg: "blue", mark: "\u2708", photo: "",
+    { title: "City of Oulu", lenses: ["events", "marketing"], bg: "blue", mark: "\u2708", photo: "photos/city.jpg",
       blurb: "University Trainee, International Affairs, at the City of Oulu.",
       challenge: "A small, fast-moving international affairs team hosting delegations and working with foreign partner cities.",
       action: "Coordinated schedules, agendas and communication for international delegation visits, supported international events from logistics to on-the-ground coordination, wrote reports, and kept the department's websites up to date.",
@@ -848,8 +848,8 @@ const DATA = {
       outcome: "Organised the side events around Oulu's ice-hole pitching competition, during Oulu2026 European Capital of Culture." },
     { name: "Slush", date: "2025 + 16\u201320 Nov 2026", role: "Volunteer \u2192 Volunteer Lead, Recycling Team", people: "", photo: "photos/ev-slush.jpg",
       outcome: "Volunteered in 2025. In 2026 I lead the Recycling Team: interviewing and onboarding volunteers, including high schoolers." },
-    { name: "Panath\u0113nea 26", date: "2026 \u00b7 Athens", role: "OuluES partner trip", people: "", photo: "photos/ev-athens.jpg",
-      outcome: "Panath\u0113nea in Athens is an OuluES partner. I went and turned the trip into a Greece series for my Instagram." }
+    { name: "Panath\u0113nea 26", date: "2026 \u00b7 Athens", role: "OuluES side event organiser", people: "", photo: "photos/ev-athens.jpg",
+      outcome: "With OuluES, we organised a side event at Panath\u0113nea in Athens, one of our partner festivals." }
   ],
   samples: [
     { kind: "Reel", title: "Educational reel: all about frogs", views: "39.6k", url: "https://www.instagram.com/withdinka/reel/Dcd4CpINLRR/", who: "@withdinka", bg: "pink", best: true },
@@ -880,7 +880,7 @@ const DATA = {
     { yr: "Jun 2026", stamp: "City of Oulu", t: "LaunchX + city job", p: "Ran marketing for LaunchX and started as a University Trainee in International Affairs at the City of Oulu.", round: true },
     { yr: "Oct 2026", stamp: "Sundsvall \u00b7 Rokua \u00b7 Oulu", t: "my busiest month", p: "B\u00fcnsow Challenge in Sweden, AURO.RA Fall, and project lead for Voices of Europe, where I gave the Day 5 keynote.", photo: "photos/ev-ikon.jpg" },
     { yr: "Nov 2026", stamp: "Slush", t: "volunteer lead", p: "Leading the Recycling Team at Slush 2026.", round: true },
-    { yr: "Jun 2027", stamp: "Next stop", t: "graduation + you?", p: "Finishing my degree. Available now, part-time or full-time, for marketing, project coordination or tech roles. Open to moving to Helsinki.", next: true }
+    { yr: "Jun 2027", stamp: "Next stop", t: "graduation + you?", p: "Finishing my degree. Available now, part-time or full-time, for marketing, project coordination or tech roles. Open to relocating.", next: true }
   ],
   skills: {
     tech: ["Python", "Java", "Kotlin", "C", "Android / Compose", "VR / 3D", "Unity / C#", "Git"],
@@ -889,7 +889,7 @@ const DATA = {
     content: ["Short-form video", "Filming", "Editing", "Scripting", "Bilingual narration"]
   },
   letter: "thank you so much for visiting my portfolio! if you got this far, I think we'd work well together. let's grab a coffee (or a call). xo",
-  extra: "Available now, part-time or full-time, for marketing, project coordination and tech roles. Based in Oulu, open to moving to Helsinki. Graduating in June 2027. As a creator I am open to brand collaborations."
+  extra: "Available now, part-time or full-time, for marketing, project coordination and tech roles. Based in Oulu, open to relocating. Graduating in June 2027. As a creator I am open to brand collaborations."
 };
 /* ================================================================== */
 
