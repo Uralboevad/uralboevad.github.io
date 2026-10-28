@@ -300,6 +300,13 @@ dialog.note::backdrop { background: rgba(23, 19, 21, .55); }
 .askme b { font-family: var(--f-bubble); font-weight: 400; font-size: 1.3rem; }
 .askme span { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
 .askme em { font-style: normal; background: var(--white); border: 1.5px solid var(--ink); border-radius: 999px; padding: 2px 10px; font-size: .9rem; }
+.skills { margin-top: 56px; display: grid; gap: 18px; }
+.skills h3 { font-family: var(--f-bubble); font-weight: 400; font-size: clamp(1.6rem, 4vw, 2.2rem); }
+.skill-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 860px) { .skill-cols { grid-template-columns: 1fr; } }
+.skill-cols > div { background: var(--white); padding: 16px 18px; box-shadow: 0 6px 16px rgba(40,25,20,.08); min-width: 0; }
+.skill-cols b { display: block; margin-bottom: 10px; color: var(--rose); }
+.skill-cols .chips li { font-family: var(--f-sans); font-size: .88rem; border-width: 1px; padding: 3px 10px; }
 .route { position: relative; margin-top: 60px; }
 .route-head { display: flex; justify-content: space-between; align-items: end; gap: 12px; flex-wrap: wrap; }
 .route-head h3 { font-family: var(--f-bubble); font-weight: 400; font-size: clamp(1.6rem, 4vw, 2.2rem); }
@@ -465,6 +472,10 @@ footer .wrap { padding-block: 18px; display: flex; flex-wrap: wrap; gap: 10px; j
           <div class="askme"><b>ask me about</b><span id="askList"></span></div>
         </div>
       </div>
+      <div class="skills">
+        <h3>skills</h3>
+        <div class="skill-cols" id="skillCols"></div>
+      </div>
       <div class="route">
         <div class="route-head">
           <h3>the route so far</h3>
@@ -525,6 +536,11 @@ const DATA = {
     ["Volunteer Lead, Slush 2026", "Recycling Team · 16–20 Nov, Helsinki"]
   ],
   askMe: ["startups in Oulu", "moving countries at 16", "a thesis project with your company"],
+  skills: [
+    ["Tech", ["Python", "Java", "Kotlin", "C", "C#", "JavaScript", "Jetpack Compose", "Room / SQLite", "REST APIs", "Unity", "VR / XR", "Git"]],
+    ["Marketing & content", ["Startup marketing", "Content strategy", "Social media", "Copywriting", "Branding", "Canva", "Short-form video", "Filming & editing", "Website building (Voog)"]],
+    ["Events & projects", ["Project management", "Event planning", "Speaker, mentor & judge outreach", "Volunteer coordination", "Stakeholder management", "Public speaking & panels", "Luma", "KideApp"]]
+  ],
   languages: [["Uzbek", "Salom"], ["Tajik", "Салом"], ["Russian", "Привет"], ["English", "Hello"], ["Finnish", "Moi"]],
 
   builds: [
@@ -859,6 +875,7 @@ $("#sgrid").append(...DATA.samples.map(x => {
 /* ---------- about + story ---------- */
 $("#bio").append(...DATA.bio.map(t => el("p", { textContent: t })));
 $("#langs").append(...DATA.languages.map(([l, hi]) => { const b = el("button", { type: "button", className: "lang", ariaLabel: l + ": " + hi }, el("span", { className: "f", textContent: l }), el("span", { className: "b", textContent: hi })); b.onclick = () => b.classList.toggle("on"); return b; }));
+$("#skillCols").append(...DATA.skills.map(([t, list]) => el("div", {}, el("b", { textContent: t }), chips(list))));
 $("#nowList").append(...DATA.now.map(([t, sub, on]) => el("li", {}, el("i", { className: on ? "on" : "" }), el("span", {}, t, el("small", { textContent: sub })))));
 $("#askList").append(...DATA.askMe.map(t => el("em", { textContent: t })));
 const track = $("#track"), plane = $("#plane"), tline = $("#trackLine");
