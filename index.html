@@ -139,7 +139,7 @@ section { position: relative; }
 .built { background: var(--ink); color: var(--white); }
 .built .sec-head h2 { color: var(--pink); }
 .built .sec-head p { color: rgba(255,253,247,.75); }
-.builds { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.builds { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
 @media (max-width: 960px) { .builds { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; } }
 .build { background: var(--ink-2); border: 1px solid rgba(255,253,247,.12); display: flex; flex-direction: column; min-width: 0; }
 .build .media { position: relative; height: 320px; background: #0C0A0B; display: grid; place-items: center; overflow: hidden; }
@@ -149,6 +149,9 @@ section { position: relative; }
 .build .media.art b { font-family: var(--f-bubble); font-weight: 400; font-size: 3.2rem; line-height: 1; }
 .build .media.art span { font-family: var(--f-type); font-size: .9rem; background: var(--white); padding: 2px 10px; }
 .build .media.art:hover b { color: var(--rose); }
+.build .media.shots { background: #F2E9CE; display: flex; gap: 12px; justify-content: center; align-items: center; padding: 14px; text-decoration: none; }
+.build .media.shots img { height: 100%; width: auto; max-width: 48%; object-fit: contain; box-shadow: 0 6px 16px rgba(0,0,0,.18); border-radius: 10px; }
+.build .media.shots span { position: absolute; right: 10px; bottom: 10px; background: var(--ink); color: var(--white); font-family: var(--f-type); font-size: .78rem; padding: 2px 10px; }
 .sound { position: absolute; right: 10px; bottom: 10px; background: rgba(23,19,21,.8); color: var(--white); border: 1px solid rgba(255,253,247,.4); border-radius: 999px; padding: 4px 12px; font-family: var(--f-type); font-size: .78rem; }
 .bbody { padding: 20px 20px 22px; display: grid; gap: 12px; align-content: start; flex: 1; }
 .kicker { font-family: var(--f-type); font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: var(--pink); }
@@ -157,11 +160,12 @@ section { position: relative; }
 .build ul.bul { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: .95rem; color: rgba(255,253,247,.9); }
 .build .chips { color: var(--blue); }
 .build .row { margin-top: auto; padding-top: 6px; }
-.extra-tech { margin-top: 30px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.extra-tech { margin-top: 30px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 @media (max-width: 960px) { .extra-tech { grid-template-columns: 1fr; max-width: 560px; margin-inline: auto; } }
 .extra-tech div { border: 1px solid rgba(255,253,247,.2); padding: 14px 16px; min-width: 0; }
 .extra-tech b { display: block; font-size: 1rem; margin-bottom: 4px; }
 .extra-tech span { font-size: .9rem; color: rgba(255,253,247,.75); }
+.extra-tech a { color: var(--pink); font-family: var(--f-type); font-size: .82rem; margin-left: 4px; }
 .built .center { margin-top: 30px; display: flex; justify-content: center; }
 
 /* ---------- WORK (polaroids) ---------- */
@@ -388,7 +392,7 @@ footer .wrap { padding-block: 18px; display: flex; flex-wrap: wrap; gap: 10px; j
     <div class="wrap">
       <div class="sec-head">
         <h2>things I've built</h2>
-        <p>An Android app, a 3D game and a live web demo. Code I wrote, a game we shipped, and something you can try right now.</p>
+        <p>An Android app, a 3D game and two web apps you can try right now.</p>
       </div>
       <div class="builds" id="builds"></div>
       <div class="extra-tech" id="extraTech"></div>
@@ -529,16 +533,22 @@ const DATA = {
       one: "A gamified screen-time tool that helps you scroll less without it feeling like a punishment.",
       bullets: ["Shaped the product concept", "Built a live interactive version on Ikon AI", "Wrote the pitch and presented it at a course trade fair"],
       stack: ["Ikon AI", "HTML", "Product design", "Pitching"],
-      links: [["try it live ↗", "https://unscroll-90e3f52a.ikonai.app/"]] }
+      links: [["try it live ↗", "https://unscroll-90e3f52a.ikonai.app/"]] },
+    { title: "Mood check-in", kicker: "Web app · HTML, CSS, JS", shots: ["photos/mood-pick.jpg", "photos/mood-reveal.jpg"], url: "mood/index.html",
+      one: "“Bugun o'zingizni qanday his qilyapsiz?” A tiny mood check-in in Uzbek: pick how you feel and get a kind note back.",
+      bullets: ["Four moods with hand-drawn SVG doodles", "A random supportive message for each mood, never the same one twice in a row", "Made for my Uzbek-speaking audience, no frameworks"],
+      stack: ["HTML", "CSS", "JavaScript", "SVG"],
+      links: [["try it ↗", "mood/index.html"], ["view the code ↗", "https://github.com/Uralboevad/mood-app"]] }
   ],
   extraTech: [
     ["Data Structures & Algorithms", "Java + Maven coursework: stacks, queues and linked lists so far."],
     ["Operating Systems lab", "C: producer–consumer, semaphores, deadlocks, fork and sockets."],
-    ["Toolkit", "Python · Java · Kotlin · C · C# · VR / 3D · Git"]
+    ["Intro to XR", "Unity + C#: a custom grab that works with two VR controllers at once, plus controller input for lights and teleporting.", "https://github.com/Uralboevad/IntroToXR-Homework2"],
+    ["Toolkit", "Python · Java · Kotlin · C · C# · JavaScript · VR / 3D · Git"]
   ],
 
   projects: [
-    { title: "Voices of Europe 2026", bg: "blue", mark: "VOE", photo: "",
+    { title: "Voices of Europe 2026", bg: "blue", mark: "VOE", photo: "photos/voe.jpg",
       sum: "Project lead for a week in Oulu on languages and identities in European border regions.",
       blurb: "A week-long event in Oulu (19–25 Oct 2026), part of Oulu2026 European Capital of Culture.",
       challenge: "Bring people from across Europe's border regions together for a week about language and identity.",
@@ -747,6 +757,8 @@ $("#builds").append(...DATA.builds.map(b => {
       media.append(s);
     }
     if (reduced) v.controls = true;
+  } else if (b.shots) {
+    media = el("a", { className: "media shots", href: b.url, target: "_blank", rel: "noopener", ariaLabel: "Open " + b.title }, ...b.shots.map(src => el("img", { src, alt: b.title + " screen", loading: "lazy" })), el("span", { textContent: "tap to try it ↗" }));
   } else {
     media = el("a", { className: "media art", href: b.url, target: "_blank", rel: "noopener", ariaLabel: "Open " + b.title + " live demo" }, el("b", { textContent: b.art }), el("span", { textContent: "tap to try it live ↗" }));
   }
@@ -763,7 +775,7 @@ if (!reduced && "IntersectionObserver" in window) {
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.play().catch(() => {}); else e.target.pause(); }), { threshold: .35 });
   vids.forEach(v => io.observe(v));
 }
-$("#extraTech").append(...DATA.extraTech.map(([t, d]) => el("div", {}, el("b", { textContent: t }), el("span", { textContent: d }))));
+$("#extraTech").append(...DATA.extraTech.map(([t, d, href]) => el("div", {}, el("b", { textContent: t }), el("span", { textContent: d }), href ? el("a", { href, target: "_blank", rel: "noopener", textContent: "code ↗" }) : null)));
 
 /* ---------- work board ---------- */
 const note = $("#note");

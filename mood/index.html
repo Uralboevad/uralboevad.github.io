@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bugun qanday his qilyapsiz?</title>
+<style>
+   @import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Indie+Flower&display=swap');
+
+  :root {
+    --cream: #F2E9CE;   /* background */
+    --red: #BF2A52;     /* headline + main text + icon lines */
+    --pink: #D96C80;    /* accents / hover */
+    --olive: #BFB74B;   /* secondary buttons / labels */
+    --orange: #F2AE2E;  /* primary buttons */
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Homemade Apple', cursive;
+    background: var(--cream);
+    color: var(--red);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .wrap { max-width: 400px; width: 100%; }
+
+  h1 {
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 32px;
+  }
+
+  /* ---------- MOOD PICKER ---------- */
+  #pickerView {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .moodBtn {
+    background: white;
+    border: 1px solid var(--olive);
+    border-radius: 12px;
+    padding: 20px 10px;
+    cursor: pointer;
+    font-family: 'Homemade Apple', cursive;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+
+  .moodBtn:hover {
+    transform: translateY(-3px) rotate(-1deg);
+    background: var(--pink);
+    border-color: var(--pink);
+  }
+
+  /* the doodle icon box — SVG lives directly inside this, sized here */
+  .emoji-icon {
+    width: 44px;
+    height: 44px;
+    margin: 0 auto 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .emoji-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: var(--red);
+  }
+
+  .moodBtn .label {
+    font-size: 18px;
+  }
+
+  /* ---------- REVEAL ---------- */
+  #revealView {
+    display: none;
+  }
+
+  .revealCard {
+    background: white;
+    border-radius: 14px;
+    padding: 32px 24px;
+    box-shadow: 0 8px 24px rgba(191,42,82,0.12);
+    animation: pop 0.4s ease;
+  }
+
+  @keyframes pop {
+    from { opacity: 0; transform: scale(0.9) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  #revealIcon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #revealIcon svg {
+    width: 100%;
+    height: 100%;
+    stroke: var(--red);
+  }
+
+  #revealText {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    min-height: 80px;
+  }
+
+  #backBtn {
+    background: none;
+    border: none;
+    color: var(--olive);
+    font-size: 15px;
+    text-decoration: underline;
+    cursor: pointer;
+    font-family: 'Homemade Apple', cursive;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>bugun o'zingizni qanday his qilyapsiz?</h1>
+
+    <!-- MOOD PICKER: shown first -->
+    <div id="pickerView">
+      <!-- data-mood must match a key in the messages object below -->
+      <button class="moodBtn" data-mood="happy">
+        <span class="emoji-icon">
+          <!-- wobbly sun doodle -->
+          <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="11" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M30 8 C31 5, 29 3, 30 1" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M48 12 C50 10, 51 9, 53 8" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M52 30 C55 29, 57 31, 59 30" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M48 48 C50 50, 51 51, 53 52" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M12 48 C10 50, 9 51, 7 53" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M8 30 C5 31, 3 29, 1 30" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M12 12 C10 10, 9 9, 7 8" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M25 28 C25.5 29.5, 26.5 29.5, 27 28" stroke-width="2" stroke-linecap="round"/>
+            <path d="M33 28 C33.5 29.5, 34.5 29.5, 35 28" stroke-width="2" stroke-linecap="round"/>
+            <path d="M25 33 C27 36, 33 36, 35 33" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="label">yaxshi</span>
+      </button>
+
+      <button class="moodBtn" data-mood="sad">
+        <span class="emoji-icon">
+          <!-- drooping flower doodle -->
+          <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 12 C29 25, 33 35, 24 46" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M27 30 C22 28, 19 31, 20 35" stroke-width="2" stroke-linecap="round"/>
+            <path d="M31 38 C35 37, 37 40, 35 43" stroke-width="2" stroke-linecap="round"/>
+            <ellipse cx="27" cy="14" rx="9" ry="7" stroke-width="2.5" transform="rotate(-15 27 14)"/>
+            <path d="M20 13 C18 12, 17 14, 18 16" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M22 20 C21 22, 22 24, 24 24" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="label">xafa</span>
+      </button>
+
+      <button class="moodBtn" data-mood="tired">
+        <span class="emoji-icon">
+          <!-- sleepy crescent moon doodle -->
+          <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M38 10 C24 10, 15 20, 15 31 C15 42, 24 50, 38 50 C28 46, 22 39, 22 30 C22 21, 28 14, 38 10 Z" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M26 29 C27 27.5, 29 27.5, 30 29" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M32 33 C33 31.5, 35 31.5, 36 33" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M42 16 L45 13" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M46 20 L50 18" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M47 25 L51 24" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="label">charchagan</span>
+      </button>
+
+      <button class="moodBtn" data-mood="anxious">
+        <span class="emoji-icon">
+          <!-- tangled scribble doodle -->
+          <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 30 C34 22, 44 24, 42 32 C40 40, 26 40, 24 32 C22 24, 34 18, 38 24 C42 30, 32 38, 26 34 C21 31, 25 24, 30 26 C34 27.5, 33 32, 29 31" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="label">xavotirda</span>
+      </button>
+    </div>
+
+    <!-- REVEAL: hidden until a mood is picked -->
+    <div id="revealView">
+      <div class="revealCard">
+        <!-- this fills in automatically based on which mood was picked, using the icons defined in the JS below -->
+        <div id="revealIcon"></div>
+        <div id="revealText"></div>
+        <button id="backBtn">orqaga</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // EDIT HERE: each mood has its doodle (as SVG markup) + a LIST of sayings.
+  // The svg strings below are exact copies of the doodles used in the buttons above —
+  // if you want to redesign a doodle, update it in BOTH places (the button above and here).
+  const messages = {
+    happy: {
+      svg: `<svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="30" cy="30" r="11" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M30 8 C31 5, 29 3, 30 1" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M48 12 C50 10, 51 9, 53 8" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M52 30 C55 29, 57 31, 59 30" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M48 48 C50 50, 51 51, 53 52" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M12 48 C10 50, 9 51, 7 53" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M8 30 C5 31, 3 29, 1 30" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M12 12 C10 10, 9 9, 7 8" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M25 28 C25.5 29.5, 26.5 29.5, 27 28" stroke-width="2" stroke-linecap="round"/>
+        <path d="M33 28 C33.5 29.5, 34.5 29.5, 35 28" stroke-width="2" stroke-linecap="round"/>
+        <path d="M25 33 C27 36, 33 36, 35 33" stroke-width="2" stroke-linecap="round"/>
+      </svg>`,
+      sayings: [
+        "ko'proq kuling! ko'p kulgan ko'p yig'laydi - bu mif :)",
+        "yaxshi kunlar shunchaki yaxshi bo'lishi mumkin, ortiqcha o'ylashning hojati yo'q",
+        "quyosh charaqlaganini sababi siz ekansizda bugun"
+      ]
+    },
+    sad: {
+      svg: `<svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30 12 C29 25, 33 35, 24 46" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M27 30 C22 28, 19 31, 20 35" stroke-width="2" stroke-linecap="round"/>
+        <path d="M31 38 C35 37, 37 40, 35 43" stroke-width="2" stroke-linecap="round"/>
+        <ellipse cx="27" cy="14" rx="9" ry="7" stroke-width="2.5" transform="rotate(-15 27 14)"/>
+        <path d="M20 13 C18 12, 17 14, 18 16" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M22 20 C21 22, 22 24, 24 24" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>`,
+      sayings: [
+        "hozir yaxshi bo'lmasangiz ham hechqisi yo'q. bu his abadiy emas va unga yolg'iz bas kelmang",
+        "har qanday qiyinchilik ortidan yengillik keladi",
+        "odamga hos hissiyot bu ham. hech qisi yo'q"
+      ]
+    },
+    tired: {
+      svg: `<svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M38 10 C24 10, 15 20, 15 31 C15 42, 24 50, 38 50 C28 46, 22 39, 22 30 C22 21, 28 14, 38 10 Z" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M26 29 C27 27.5, 29 27.5, 30 29" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M32 33 C33 31.5, 35 31.5, 36 33" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M42 16 L45 13" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M46 20 L50 18" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M47 25 L51 24" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>`,
+      sayings: [
+        "ko'p ish qilyapsiz, hatto o'zingizga bilinmasa ham. dam oling",
+        "charchaganingiz yutqazganingiz degani emas. dam olish ham foydali",
+        "tanangiz to'xtashingizni so'ramoqda. unga bu huquqni bera qoling"
+      ]
+    },
+    anxious: {
+      svg: `<svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30 30 C34 22, 44 24, 42 32 C40 40, 26 40, 24 32 C22 24, 34 18, 38 24 C42 30, 32 38, 26 34 C21 31, 25 24, 30 26 C34 27.5, 33 32, 29 31" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>`,
+      sayings: [
+        "chuqur nafas oling. sizni xavotirga solayotgan narsa nima bo'lishidan qat'iy nazar, siz avval ham qiyinchiliklarni yengib chiqqansiz, yana ham yengasiz",
+        "miyang eng yomon ssenariyni aytishi mumkin, lekin bu shunchaki illuziya",
+        "ba'zan eng katta g'alaba — vahimaga qaramay davom etishdir"
+      ]
+    }
+  };
+
+  const pickerView = document.getElementById('pickerView');
+  const revealView = document.getElementById('revealView');
+  const revealIcon = document.getElementById('revealIcon');
+  const revealText = document.getElementById('revealText');
+  const backBtn = document.getElementById('backBtn');
+
+  let currentMood = null;
+  let lastIndex = null;
+
+  function showSaying(mood) {
+    const data = messages[mood];
+    const total = data.sayings.length;
+
+    // pick fully at random each time — just avoid showing the exact same one twice in a row
+    let index;
+    do {
+      index = Math.floor(Math.random() * total);
+    } while (index === lastIndex && total > 1);
+    lastIndex = index;
+
+    revealIcon.innerHTML = data.svg;
+    revealText.textContent = data.sayings[index];
+  }
+
+  document.querySelectorAll('.moodBtn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentMood = btn.getAttribute('data-mood');
+      lastIndex = null;
+      showSaying(currentMood);
+
+      pickerView.style.display = 'none';
+      revealView.style.display = 'block';
+    });
+  });
+
+  backBtn.addEventListener('click', () => {
+    revealView.style.display = 'none';
+    pickerView.style.display = 'grid';
+  });
+</script>
+</body>
+</html>
