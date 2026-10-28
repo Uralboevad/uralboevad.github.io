@@ -110,6 +110,14 @@ section { position: relative; }
 .hero .foot b { font-weight: 600; }
 .stamp { position: absolute; z-index: 4; right: 6%; bottom: 14%; width: 118px; height: 118px; border-radius: 50%; border: 2.5px solid var(--rose); color: var(--rose); display: grid; place-items: center; text-align: center; font-family: var(--f-type); font-weight: 700; font-size: .78rem; line-height: 1.15; transform: rotate(-14deg); background: rgba(239, 231, 216, .6); }
 .stamp::before { content: ""; position: absolute; inset: 6px; border-radius: 50%; border: 1px dashed var(--rose); }
+/* laptops: keep the headline line and the top of the 30-second card on the first screen */
+@media (min-width: 701px) {
+  .hero .stage { min-height: clamp(480px, calc(100vh - 250px), 640px); padding-block: 24px 34px; }
+  .bigname span { font-size: clamp(4rem, min(13vw, 21vh), 11rem); }
+  .hero-photo { width: clamp(150px, min(20vw, 33vh), 270px); }
+  .tldr { padding-top: 6px; }
+  .stamp { right: auto; bottom: auto; left: 22%; top: 13%; width: 100px; height: 100px; font-size: .7rem; }
+}
 @media (max-width: 700px) {
   .hero .stage { min-height: 700px; }
   .hero .n-guide { top: 11%; }
