@@ -168,7 +168,8 @@ section { position: relative; }
 .big-line { font-weight: 900; font-size: clamp(2.2rem, 6vw, 4.4rem); line-height: 1.08; letter-spacing: -.025em; color: #A79C93; text-wrap: balance; }
 .big-line em { font-style: normal; color: var(--ink); }
 .big-line mark { background: var(--pink); color: var(--ink); padding: 0 .12em; }
-.board { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 30px; padding-top: 10px; }
+.board { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px 26px; padding-top: 10px; }
+@media (max-width: 1100px) { .board { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 900px) { .board { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .board { grid-template-columns: 1fr; } }
 .polaroid { position: relative; background: var(--white); padding: 12px 12px 16px; border: 0; text-align: left; box-shadow: 0 8px 20px rgba(40,25,20,.14); transform: rotate(var(--r, 0deg)); transition: transform .25s, box-shadow .25s; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
@@ -180,6 +181,14 @@ section { position: relative; }
 .polaroid .sum { font-size: .92rem; color: var(--ink-soft); }
 .polaroid .meta { display: flex; justify-content: space-between; gap: 8px; align-items: center; font-family: var(--f-type); font-size: .8rem; margin-top: auto; }
 .polaroid .meta span:first-child { background: var(--pink); padding: 0 .4em; }
+.polaroid .phwrap { position: relative; }
+.polaroid .yr { position: absolute; top: 8px; left: 8px; background: var(--white); font-family: var(--f-type); font-size: .72rem; padding: 1px 6px; z-index: 2; }
+.polaroid .inset { position: absolute; right: -10px; bottom: 10px; width: 46%; background: var(--white); padding: 4px 4px 14px; box-shadow: 0 6px 14px rgba(0,0,0,.25); transform: rotate(5deg); z-index: 2; }
+.polaroid .inset .ph { aspect-ratio: 4 / 3; }
+.polaroid .inset .yr { top: auto; bottom: -1px; left: 50%; transform: translateX(-50%); padding: 0 4px; font-size: .66rem; }
+.note .pics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+.note .pics figure { margin: 0; display: grid; gap: 4px; font-family: var(--f-type); font-size: .75rem; color: var(--ink-soft); }
+.note .pics img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
 .polaroid .tape { top: -12px; left: 50%; margin-left: -46px; transform: rotate(var(--tr, 3deg)); }
 .also { margin-top: 44px; text-align: center; display: grid; gap: 10px; justify-items: center; }
 .also p { font-family: var(--f-type); font-size: .85rem; text-transform: uppercase; letter-spacing: .08em; }
@@ -550,6 +559,13 @@ const DATA = {
       action: "Spring edition (13–20 Mar): Project Manager & Marketing Lead, from idea validation and business modelling to MVP sprints, HackerHouse and Pitch Day. Fall edition (14–18 Oct, Customer → Product): I confirmed 8 of the speakers, mentors and judges.",
       result: "The fall edition ended with 27 builders, 10 teams and 8 demos.",
       metric: "27 builders", tools: ["Project management", "Marketing", "Speaker outreach", "Ikon AI"] },
+    { title: "JunctionX Oulu", bg: "ink", mark: "JX", photo: "photos/jx2026.jpg", photo2: "photos/jx2025.jpg", years: ["2026", "2025"],
+      sum: "The JunctionX | OuluES hackathon. On the team in 2025, back again in 2026.",
+      blurb: "JunctionX Oulu, the hackathon OuluES hosts with Junction. I was on the team for the 2025 edition and again in 2026.",
+      challenge: "Get students to spend a weekend building, and make the event impossible to miss online.",
+      action: "Event marketing and content, and on the mic during the event.",
+      result: "My hackathon carousel got 13.3k views.",
+      metric: "2025 + 2026", tools: ["Event marketing", "Carousels", "Hosting"] },
     { title: "Arktinen Hehku 2026", bg: "ink", mark: "❄", photo: "photos/ev-hehku.jpg",
       sum: "Project manager and panelist at a startup event in Lapland.",
       blurb: "A startup event in Salla Wilderness Park, Lapland (9–10 Apr 2026), followed by the Finnish ES Summit (11–12 Apr).",
@@ -564,6 +580,13 @@ const DATA = {
       action: "Ran all marketing & comms: content plans, carousels, mentor and judge invites, volunteer guidelines and the wrap-up.",
       result: "Winner: Kinet (motion capture with a phone + smartwatch). Finalists: Relocation Care Finland and Cikola Games Studio.",
       metric: "11 days", tools: ["Content plans", "Canva carousels", "Outreach", "Volunteer guidelines"] },
+    { title: "Slush", bg: "ink", mark: "S", photo: "photos/ev-slush.jpg",
+      sum: "Volunteer in 2025, Volunteer Lead of the Recycling Team in 2026.",
+      blurb: "Slush in Helsinki, one of the world's biggest startup events.",
+      challenge: "Keep a huge event running smoothly with a team of volunteers.",
+      action: "Volunteered in 2025. In 2026 I lead the Recycling Team: I send interview invites and acceptance emails, and onboard my volunteers, including high schoolers.",
+      result: "From volunteer to Volunteer Lead in one year. Slush 2026 runs 16–20 Nov.",
+      metric: "Volunteer Lead", tools: ["Team leadership", "Recruiting", "Onboarding"] },
     { title: "City of Oulu", bg: "blue", mark: "✈", photo: "photos/city.jpg",
       sum: "University Trainee, International Affairs.",
       blurb: "University Trainee in International Affairs at the City of Oulu.",
@@ -572,7 +595,7 @@ const DATA = {
       result: "Delegation visits and international events, plus documentation for internal and external stakeholders.",
       metric: "Int'l Affairs", tools: ["Stakeholder management", "Event coordination", "Reporting", "Web content"] }
   ],
-  also: ["Bünsow Challenge, Sweden: OuluES co-organiser", "Polar Bear Pitching side events", "Panathēnea side event, Athens", "Slush: Volunteer → Volunteer Lead", "FinlandQ content creator", "Savitaipale social media manager", "Freelance copywriter"],
+  also: ["Bünsow Challenge, Sweden: OuluES co-organiser", "Polar Bear Pitching side events", "Panathēnea side event, Athens", "FinlandQ content creator", "Savitaipale social media manager", "Freelance copywriter"],
 
   brand: "I run @withdinka: bilingual content for the Uzbek-speaking diaspora, an Uzbek girl building her life in Finland through tech. Series: Real Life Vlogs, Honest Thoughts and Building in Public.",
   samples: [
@@ -745,7 +768,9 @@ const note = $("#note");
 $("#board").append(...DATA.projects.map((p, i) => {
   const card = el("button", { type: "button", className: "polaroid" });
   card.style.setProperty("--r", tilt(i) + "deg"); card.style.setProperty("--tr", -tilt(i + 2) * 2 + "deg");
-  const ph = p.photo ? photoBox(p.photo, p.title) : el("div", { className: "ph art bg-" + p.bg }, el("b", { textContent: p.mark }));
+  const ph = el("div", { className: "phwrap" }, p.photo ? photoBox(p.photo, p.title) : el("div", { className: "ph art bg-" + p.bg }, el("b", { textContent: p.mark })));
+  if (p.years) ph.append(el("span", { className: "yr", textContent: p.years[0] }));
+  if (p.photo2) ph.append(el("div", { className: "inset" }, photoBox(p.photo2, p.title + " " + p.years[1]), el("span", { className: "yr", textContent: p.years[1] })));
   card.append(el("span", { className: "tape" + (i % 3 === 1 ? " blue" : i % 3 === 2 ? " pink" : "") }), ph,
     el("span", { className: "cap", textContent: p.title }),
     el("span", { className: "sum", textContent: p.sum }),
@@ -759,6 +784,7 @@ function openNote(p) {
     el("div", { className: "sheet" },
       el("h3", { textContent: p.title }),
       el("p", { textContent: p.blurb }),
+      p.photo2 ? el("div", { className: "pics" }, ...[[p.photo2, p.years[1]], [p.photo, p.years[0]]].map(([src, y]) => el("figure", {}, el("img", { src, alt: p.title + " " + y }), el("figcaption", { textContent: y })))) : null,
       el("dl", {},
         el("div", {}, el("dt", { textContent: "the problem" }), el("dd", { textContent: p.challenge })),
         el("div", {}, el("dt", { textContent: "what I did" }), el("dd", { textContent: p.action })),
